@@ -22,9 +22,9 @@ def get_rotation(normal):
     
     mat_rotate_z = mathutils.Matrix.Rotation(-angle_z, 4, 'Z')
     normal_y_rotated = mat_rotate_z * normal_y
-    angle_y = math.atan2(normal_y_rotated.z, normal_y_rotated.y)
+    angle_x = math.atan2(normal_y_rotated.z, normal_y_rotated.y)
     
-    return (0, angle_y, angle_z)
+    return (angle_x, 0, angle_z)
 
 def create_rotation_matrix(x, y, z):
     def rot_mat(*args): return mathutils.Matrix.Rotation(*args)
@@ -40,16 +40,22 @@ def flatten_face(face, mesh):
     
     flattened_verts = []
     
-#    for vert in (mesh.vertices[i].co for i in face.vertices):
-#        flattened_verts.append(inverse_rotation_matrix * vert)
-    for i in face.vertices:
-        mesh.vertices[i].co = inverse_rotation_matrix * mesh.vertices[i].co
+    for vert in (mesh.vertices[i].co for i in face.vertices):
+        flattened_verts.append(inverse_rotation_matrix * vert)
+#    for i in face.vertices:
+#        mesh.vertices[i].co = inverse_rotation_matrix * mesh.vertices[i].co
         
     return flattened_verts
     
+def relocate_face(verts):
+    min_x = min(vert.x for vert in verts)
+    min_y = min(vert.y for vert in verts)
+    min_vector = mathutils.Vector((min_x, min_y))
+    relocated_verts = [vert.to_2d() - min_vector for vert in verts]
+    return relocated_verts
 
 normal = bpy.context.selected_objects[0].data.polygons[0].normal
 print(normal)
 print(get_rotation(normal))
 print()
-print(flatten_face(bpy.context.selected_objects[0].data.polygons[0], bpy.context.selected_objects[0].data))
+print(relocate_face(flatten_face(bpy.context.selected_objects[0].data.polygons[0], bpy.context.selected_objects[0].data)))

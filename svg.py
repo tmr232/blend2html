@@ -15,6 +15,16 @@ class Polygon:
         self._vertices = vertices
         self._style = style or ""
         
+    def get_size(self):
+        print ("===========")
+        print (self._vertices)
+        print ("===========")
+        x0 = min(v.x for v in self._vertices)
+        y0 = min(v.y for v in self._vertices)
+        x1 = max(v.x for v in self._vertices)
+        y1 = max(v.y for v in self._vertices)
+        return (x1 - x0, y1 - y0)
+        
     def __str__(self):
         return "<polygon points=\"{0}\" style=\"{1}\"/>".format(verts_to_svglist(self._vertices), self._style)
         

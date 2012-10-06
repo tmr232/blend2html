@@ -1,0 +1,2 @@
+{"ts":1349554434874,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"\"\"\"HTML Creator\n\nCreates HTML files\n\"\"\"\n\ndef create_face_div(svg_file_path, transform):"]],"start1":0,"start2":0,"length1":0,"length2":87}]],"length":87}
+{"contributors":[],"silentsave":false,"ts":1349554883705,"patch":[[{"diffs":[[0,"nsform):"],[1,"\n    return \"\"\"<div style=\\\"-webkit-mask: url({0}) no-repeat;-webkit-transform:matrix3d({1});\\\"></div>\"\"\".format("]],"start1":79,"start2":79,"length1":8,"length2":121}]],"length":200,"saved":false}

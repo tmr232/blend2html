@@ -47,6 +47,12 @@ def flatten_face(face, mesh):
         
     return flattened_verts
     
+def get_3d_location(verts):
+    min_x = min(vert.x for vert in verts)
+    min_y = min(vert.y for vert in verts)
+    min_z = min(vert.z for vert in verts)
+    return mathutils.Vector((min_x, min_y, min_z))
+    
 def relocate_face(verts):
     min_x = min(vert.x for vert in verts)
     min_y = min(vert.y for vert in verts)

@@ -36,5 +36,5 @@ if __name__ == "__main__":
     </body>
     </html>
     """.format("\n".join(
-        "<div style=\"background-color:{5};position:absolute;-webkit-transform-style: preserve-3d;-webkit-transform: rotateX({0:0.3f}deg) rotateZ({1:0.3f}deg);width:{3:0.3f}px;height:{4:0.3f}px;-webkit-mask:url({2}) no-repeat;\"></div>".format(math.degrees(r[0]), math.degrees(r[2]), p, s[0], s[1], ("#{0:02x}{1:02x}{2:02x}".format(randint(0, 256)%0xff,randint(0, 256)%0xff,randint(0, 256)%0xff))) for
+        "<div style=\"background-color:{5};position:absolute;-webkit-transform-style: preserve-3d;-webkit-transform: rotateZ({1:0.3f}deg) rotateX({0:0.3f}deg);width:{3:0.3f}px;height:{4:0.3f}px;-webkit-mask:url({2}) no-repeat;\"></div>".format(math.degrees(r[0]), math.degrees(r[2]), p, s[0], s[1], ("#{0:02x}{1:02x}{2:02x}".format(randint(0, 256)%0xff,randint(0, 256)%0xff,randint(0, 256)%0xff))) for
         r,p,s in zip(rotations,names, sizes))).encode("ascii"))
